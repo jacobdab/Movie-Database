@@ -1,0 +1,22 @@
+
+<div class="d-flex justify-content-center align-items-center vh-100 ">
+  <div class="form-box col-lg-6 col-md-8 col-sm-10 col-12 col-xl-6">
+    <form class="form-row" id="signup" #signup="ngForm" (ngSubmit)="createUser(signup.value)">
+      <div class="form-group col-12">
+        <label for="username" class="pink-color">Username</label>
+        <input type="text" ngModel class="form-control" id="username" name="username" placeholder="Put your username" required>
+      </div>
+      <div class="form-group col-12">
+        <label for="password" class="pink-color">Password</label>
+        <input type="password" ngModel class="form-control" name="password" id="password" placeholder="Put your password" required>
+      </div>
+      <div class="form-group col-12">
+        <label for="email" class="pink-color">Email address</label>
+        <input type="email" ngModel class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Put your email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required>
+        <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
+      </div>
+      <button type="submit" class="btn btn-primary w-100" [disabled]="signup.invalid">Submit</button>
+    </form>
+  </div>
+</div>
+

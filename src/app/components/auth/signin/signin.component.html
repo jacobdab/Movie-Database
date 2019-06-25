@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-center align-items-center vh-100" id="signBox">
+  <div class="form-box col-lg-8 col-md-10 col-sm-12 col-12 col-xl-8">
+    <form class="form-row" id="signin" #signin="ngForm" (ngSubmit)="login(signin.value)">
+      <div class="form-group col-12">
+        <label for="username" class="pink-color">Username</label>
+        <input type="text" ngModel class="form-control" id="username" name="username" placeholder="Put your username" required>
+      </div>
+      <div class="form-group col-12">
+        <label for="password" class="pink-color">Password</label>
+        <input type="password" ngModel class="form-control" name="password" id="password" placeholder="Put your password" required>
+      </div>
+      <button type="submit" id="signButton" class="btn btn-primary w-100" [disabled]="signin.invalid">Sign In</button>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,21 @@
+<div class="container h-100">
+  <div class="bg-dark h-100 rounded">
+    <ul class="list-group-flush px-0">
+      <li class="list-group-item" *ngFor="let commentItem of commentsList;let i = index">
+        <div class="row mx-0 scale">
+          <div class="col-8">{{commentItem.text}}
+            <p>
+              <small>Created by {{commentItem?.author?.username}}</small>
+            </p>
+            <div class="right-top-align">
+              <button class="btn btn-danger btn-sm float-right" (click)="deleteComment(commentItem)">Delete</button>
+            </div>
+          </div>
+          <div class="col-4">Added in movie {{movieList[i].title}}
+            <a class="d-block" [routerLink]="['/movie',movieList[i]._id]">Go to movie</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

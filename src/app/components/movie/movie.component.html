@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center" *ngIf="movie">
+  <div class="card" style="max-width: 500px">
+    <a routerLink="" class="btn btn-sm btn-primary position-absolute" style="right: 0">X</a>
+    <div><img class="card-img-top" [src]="movie.poster" [alt]="movie.title" style="max-height: 350px;max-width: 500px">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{movie.title}} {{movie.year}}</h5>
+      <div class="float-right"><strong>Rating: {{movie.imdbRating}}</strong></div>
+      <div><strong>Genre:</strong> {{movie.genre}}</div>
+      <p class="card-text lead">{{movie.plot}}</p>
+      <div><strong>Actors:</strong> {{movie.actors}}</div>
+      <div><strong>Director:</strong> {{movie.director}}</div>
+      <div><strong>Language:</strong> {{movie.language}}</div>
+    </div>
+    <div class="row w-100 mx-0">
+      <div class="col-12">
+        <div class="float-right">
+          <button class="btn btn-danger mb-2" (click)="show = !show" [disabled]="!user">Add comment</button>
+          <p class="text-right" *ngIf="!user"><small >Please login first</small></p>
+        </div>
+
+        <div class="box" [class.opened]="show">
+          <div class="row">
+            <div class="col-10">
+
+                <form action="" class="form-inline">
+                  <div>
+                    <input ngModel #comment="ngModel" name="comment" required class="form-control"
+                           placeholder="Comment text">
+                    <button class="btn btn-primary float-right" [disabled]="comment.control.value === ''"
+                            (click)="addComment(comment);show = !show">Send
+                    </button>
+                  </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12" *ngIf="comments.length > 0">
+        <div class="row">
+          <div class="col-12 border-top" *ngFor="let commentItem of comments;let i = index">{{commentItem.text}}
+            <p>
+              <small>Created by {{commentItem?.author?.username}}</small>
+            </p>
+            <div class="right-top-align">
+              <button class="btn btn-danger btn-sm float-right" [disabled]="!user" (click)="deleteComment(commentItem)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 text-center py-3 bg-dark rounded text-white mt-3" *ngIf="comments.length == 0">No comments added</div>
+    </div>
+  </div>
+</div>

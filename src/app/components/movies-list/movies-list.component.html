@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="bg-dark rounded">
+    <button class="btn btn-sm btn-primary float-right position-relative" [disabled]="!user" routerLink="add-movie" style="z-index: 5">Add
+      movie
+    </button>
+    <ul class="list-group-flush px-0">
+      <li [routerLink]="['movie',movieItem._id]" class="list-group-item" *ngFor="let movieItem of moviesList">
+        <div class="row mx-0 scale">
+          <div class="col-2 px-0">
+            <img [src]="movieItem.poster" [alt]="movieItem.title" class="poster">
+          </div>
+          <div class="col-3"> {{movieItem.title}}</div>
+          <div class="col-4"> {{movieItem.plot}}</div>
+          <div class="col-2"> {{movieItem.type}}</div>
+          <div class="col-1"> {{movieItem.imdbRating}}</div>
+          <button class="btn btn-sm btn-danger float-right" id="deleteMovie" *ngIf="user" (click)="deleteMovie($event,movieItem._id)">Delete
+            movie</button>
+        </div>
+        <p class="text-center"><small >Click anywhere on element to go to Movie page</small></p>
+      </li>
+    </ul>
+  </div>
+</div>

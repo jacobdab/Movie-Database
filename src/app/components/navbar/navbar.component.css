@@ -1,0 +1,30 @@
+.active-pink-2 input[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #007bff;
+  box-shadow: 0 1px 0 0 #007bff;
+}
+
+.active-pink-2 .fa {
+  color: #007bff;
+}
+.form-control {
+  border: none;
+  border-radius: 0px;
+  color: white;
+  border-bottom: 1px solid #ced4da;
+  background: transparent;
+  -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+  -o-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+  width: 100%;
+}
+.form-control::placeholder {
+  color: #212529;
+}
+
+
+.search-query{
+  position: absolute;
+  top: 0;
+}

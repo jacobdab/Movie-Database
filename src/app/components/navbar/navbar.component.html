@@ -1,0 +1,18 @@
+<nav class="container navbar navbar-expand-md py-0 bg-black mt-3" *ngIf="!rerender">
+  <ul class="navbar-nav ml-auto fl">
+    <li class="nav-item px-1"><a routerLink="/" class="nav-link btn">Movies</a></li>
+    <li class="nav-item px-1"><a routerLink="comments" class="nav-link btn">Comments</a></li>
+  </ul>
+  <div class="search-query w-25">
+    <form class="form-inline active-pink-2">
+      <input (input)="querySearch($event.target)" name="searchQuery" class="form-control form-control-sm mr-3 w-100" type="text" placeholder="Search by title" aria-label="Search" ngModel autocomplete="off">
+      <i class="fas fa-search" aria-hidden="true"></i>
+    </form>
+  </div>
+  <ul class="navbar-nav ml-auto" id="auth">
+      <li class="nav-item" *ngIf="!isLogged"><a class="nav-link" routerLink="sign-in">Sign In</a></li>
+      <li class="nav-item" *ngIf="!isLogged"><a class="nav-link" routerLink="sign-up">Sign Up</a></li>
+      <li class="nav-item" *ngIf="isLogged"><a class="nav-link" (click)="signout()" style="cursor: pointer;">Sign Out</a></li>
+      <li class="nav-item" *ngIf="isLogged"><span class="nav-link text-primary" style="cursor: pointer">{{userData.username}}</span></li>
+  </ul>
+</nav>
