@@ -13,19 +13,19 @@ export class PostDataService {
 
 
   addMovie(formData): Observable<MoviesModel> {
-    return this.http.post<MoviesModel>('http://localhost:3000/api/add-movie', {formData});
+    return this.http.post<MoviesModel>('http://localhost:4004/api/add-movie', {formData});
   }
 
 
   deleteMovie(movieId): Observable<MoviesModel> {
-    return this.http.delete<MoviesModel>('http://localhost:3000/api/delete-video/', {params: {movieId}});
+    return this.http.delete<MoviesModel>('http://localhost:4004/api/delete-movie/', {params: {movieId}});
   }
 
   addComment(comment, movieId, userId) {
-    return this.http.post('http://localhost:3000/api/add-comment', {comment, movieId, userId});
+    return this.http.post('http://localhost:4004/api/add-comment', {comment, movieId, userId});
   }
 
   deleteComment(commentId, movieId) {
-    return this.http.delete('http://localhost:3000/api/delete-comment', {params: {commentId, movieId}});
+    return this.http.delete('http://localhost:4004/api/delete-comment', {params: {commentId, movieId}});
   }
 }

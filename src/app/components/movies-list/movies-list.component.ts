@@ -33,7 +33,6 @@ export class MoviesListComponent implements OnInit {
   deleteMovie(event, movieId) {
     event.stopPropagation();
     this.postData.deleteMovie(movieId).subscribe((response) => {
-      console.log(response);
       this.getMoviesList();
     });
   }

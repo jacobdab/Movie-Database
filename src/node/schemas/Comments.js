@@ -6,7 +6,8 @@ const commentsSchema = new mongoose.Schema({
   author: {
     userId: {type: mongoose.Schema.Types.ObjectId, ref: 'Users'},
     username: {type: String}
-  }
+  },
+  movie: {type: mongoose.Schema.Types.ObjectId, ref: 'Movies'}
 });
 
 module.exports = mongoose.model('Comments', commentsSchema);

@@ -14,18 +14,18 @@ export class GetDataService {
 
 
   getMoviesList(): Observable<MoviesModel[]> {
-    return this.http.get<MoviesModel[]>('http://localhost:3000/api/');
+    return this.http.get<MoviesModel[]>('http://localhost:4004/api/');
   }
 
   getMovie(id): Observable<MoviesModel> {
-    return this.http.get<MoviesModel>('http://localhost:3000/api/get-movie', {params: {id}});
+    return this.http.get<MoviesModel>('http://localhost:4004/api/get-movie', {params: {id}});
   }
 
   getComments() {
-    return this.http.get('http://localhost:3000/api/get-comments');
+    return this.http.get('http://localhost:4004/api/get-comments');
   }
 
   searchQuery(value) {
-    return this.http.get('http://localhost:3000/api/search-query', {params: {name: value}});
+    return this.http.get('http://localhost:4004/api/search-query', {params: {name: value}});
   }
 }

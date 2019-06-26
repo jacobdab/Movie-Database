@@ -3,8 +3,6 @@ import {CookieService} from 'ngx-cookie-service';
 import {PostDataService} from '../../shared/post-data.service';
 import {map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject} from 'rxjs';
-import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +13,7 @@ export class AuthService {
   }
 
   createUser(user) {
-    return this.http.post('http://localhost:3000/user/signup', user)
+    return this.http.post('http://localhost:4004/user/signup', user)
       .pipe(map((response: Response) => {
         console.log(response);
         this.setToken(response);
@@ -33,7 +31,7 @@ export class AuthService {
 
 
   signIn(user) {
-    return this.http.post('http://localhost:3000/user/signin', user)
+    return this.http.post('http://localhost:4004/user/signin', user)
       .pipe(map((response: Response) => {
         this.setToken(response);
       }));

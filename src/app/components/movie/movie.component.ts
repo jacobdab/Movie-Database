@@ -21,13 +21,12 @@ export class MovieComponent implements OnInit {
   constructor(private getData: GetDataService, private postData: PostDataService, private auth: AuthService, private route: ActivatedRoute) {
   }
 
+
   ngOnInit() {
     this.movieId = this.route.snapshot.url[1].path;
     this.getData.getMovie(this.movieId).subscribe((response) => {
-      console.log(response);
       this.movie = response;
       this.comments = response.comments;
-      console.log(this.comments);
     });
     if (this.auth.getToken()) {
       this.user = jwt_decode(this.auth.getToken());
@@ -42,9 +41,9 @@ export class MovieComponent implements OnInit {
     });
   }
 
-  deleteComment(commentItem) {
-    this.postData.deleteComment(commentItem._id, this.movieId).subscribe((response) => {
-      console.log(response);
+  deleteComment(commentId) {
+    // @ts-ignore
+    this.postData.deleteComment(commentId, this.movie._id).subscribe((_) => {
       this.ngOnInit();
     });
   }

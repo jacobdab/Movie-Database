@@ -38,12 +38,12 @@
       </div>
       <div class="col-12" *ngIf="comments.length > 0">
         <div class="row">
-          <div class="col-12 border-top" *ngFor="let commentItem of comments;let i = index">{{commentItem.text}}
+          <div class="col-12 border-top" *ngFor="let commentItem of comments">{{commentItem.text}}
             <p>
               <small>Created by {{commentItem?.author?.username}}</small>
             </p>
             <div class="right-top-align">
-              <button class="btn btn-danger btn-sm float-right" [disabled]="!user" (click)="deleteComment(commentItem)">Delete</button>
+              <button class="btn btn-danger btn-sm float-right" [disabled]="!user" (click)="deleteComment(commentItem._id)">Delete</button>
             </div>
           </div>
         </div>

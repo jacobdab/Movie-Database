@@ -32,18 +32,16 @@ router.get('/get-movie', (req, res) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      console.log(movie);
       res.status(200).send(movie);
     }
   })
 });
 
 router.get('/get-comments', (req, res) => {
-  Comments.find({}).populate('movie').exec((err, comments) => {
+  Comments.find({},).populate('movie').exec((err, comments) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      console.log(comments);
       res.status(200).send(comments);
     }
   })
@@ -96,7 +94,7 @@ router.post('/add-movie', (req, res) => {
 });
 
 router.post('/add-comment', (req, res) => {
-  Movies.findById(req.body.movieId, (err, movieItem) => {
+  Movies.findById(req.body.movieId, (err, movie) => {
     if (err) {
       res.status(200).send(err);
     } else {
@@ -104,11 +102,12 @@ router.post('/add-comment', (req, res) => {
         if (err) {
           res.status(400).send(err);
         } else {
-          movieItem.comments.push(comment);
-          movieItem.save();
+          console.log(movie);
           comment.author = {userId: req.body.userId, username: req.body.userId.username};
-          comment.movie = movieItem;
+          comment.movie.push(movie);
           comment.save();
+          movie.comments.push(comment);
+          movie.save();
           res.status(200).send(comment);
         }
       });
@@ -143,7 +142,7 @@ router.delete('/delete-comment', (req, res) => {
         if (err) {
           res.status(400).send(err);
         } else {
-          movie.comments.pull(req.query.movieId);
+          movie.comments.pull(req.query.commentId);
           movie.save();
           res.status(200).send(movie);
         }
